@@ -1,0 +1,12 @@
+### Criar uma order
+POST http://localhost:9030/order
+Content-Type: application/json
+
+{
+  "customer_id": 1,
+  "products": ["product1", "product2"],
+  "total_amount": 100.00
+}
+
+### Listar todas as orders
+GET http://localhost:9030/order
