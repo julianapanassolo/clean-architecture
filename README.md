@@ -1,14 +1,12 @@
-# clean-architecture
+ Desafio: Listagem de Pedidos (Orders)
 
-Este projeto implementa um serviço de pedidos com endpoints REST, GRPC e GraphQL.
+## Introdução
+
+Este repositório contém um exemplo de aplicação em Go para gerenciar pedidos (orders) utilizando REST, gRPC e GraphQL, além de um banco de dados configurado com Docker.
 
 ## Pré-requisitos
 
-- Docker
-- Docker Compose
+* Go 1.18 ou superior
+* Docker
+* Docker Compose
 
-## Instalação
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/julianapanassolo/clean-architecture.git# clean-architecture

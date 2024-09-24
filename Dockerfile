@@ -1,15 +1,11 @@
-FROM golang:1.20-alpine
+FROM mysql:latest
 
-WORKDIR /app
+# Define o usuário e a senha do banco de dados
+ENV MYSQL_ROOT_PASSWORD=social
+ENV MYSQL_DATABASE=social
 
-COPY go.mod go.sum ./
+# Crie o diretório de dados
+RUN mkdir -p /var/lib/mysql/
 
-RUN go mod download
-
-COPY . .
-
-RUN go build -o clean-architecture
-
-EXPOSE 50051 9030 9031
-
-CMD ["./clean-architecture"]
+# Executa o script de inicialização do banco de dados
+CMD ["mysqld"]

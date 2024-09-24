@@ -2,20 +2,36 @@ version: "3.9"
 
 services:
   db:
-    image: postgres:15
+    image: mysql:latest
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: orders
+      MYSQL_ROOT_PASSWORD: social
+      MYSQL_DATABASE: social
     ports:
-      - "5432:5432"
+      - "9031:9031"
+    volumes:
+      - db_data:/var/lib/mysql
 
-  clean architecture:
+  rest-api:
     build: .
     depends_on:
       - db
     ports:
-      - "9030:9030" # REST API
-      - "9031:9031" # GraphQL
-      - "50051:50051" # GRPC
+      - "9030:9030"
+
+  grpc-api:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "50051:50051"
+
+  graphql-api:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "9032:9032"
+
+volumes:
+  db_data:

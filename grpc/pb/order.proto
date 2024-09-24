@@ -2,22 +2,20 @@ syntax = "proto3";
 
 package order;
 
-option go_package = grpc/pb/order.proto
+option go_package = grpc/pb/order.proto;
 
 message Empty {}
 
 message Order {
   int32 id = 1;
   int32 customerId = 2;
-  double totalAmount = 3; // Use double para valores decimais
-  // ... outros campos
+  double totalAmount = 3;
 }
 
 service OrderService {
   rpc ListOrders(Empty) returns (ListOrdersResponse);
-  // ... outros métodos do serviço
 }
 
 message ListOrdersResponse {
-  repeated Order orders = 1; 
+  repeated Order orders = 1;
 }
